@@ -25,7 +25,7 @@ export const Route = createFileRoute("/meeting-notes")({
       },
     ],
   }),
-  component: MeetingNotes;
+  component: MeetingNotes,
 });
 
 const SAMPLE = `We agreed to ship the billing revamp before the end of the quarter.
