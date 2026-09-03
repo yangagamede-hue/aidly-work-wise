@@ -57,7 +57,10 @@ export function AppShell({ children }: { children: ReactNode }) {
             ))}
           </nav>
 
-          <div className="mt-auto glass rounded-2xl p-4">
+          <div className="mt-auto flex flex-col gap-3">
+            <SidebarProfile />
+
+          <div className="glass rounded-2xl p-4">
             <div className="mb-2 flex items-center gap-2">
               <span className="size-2 rounded-full bg-accent" />
               <span className="text-xs font-medium text-foreground/80">Pro plan · 4,210 credits</span>
