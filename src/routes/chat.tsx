@@ -20,7 +20,7 @@ export const Route = createFileRoute("/chat")({
       },
     ],
   }),
-  component: Chat;
+  component: Chat,
 });
 
 interface Msg {
