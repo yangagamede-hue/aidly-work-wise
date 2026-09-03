@@ -68,6 +68,7 @@ export function AppShell({ children }: { children: ReactNode }) {
             <div className="h-1.5 w-full overflow-hidden rounded-full bg-white/10">
               <div className="h-full w-3/4 rounded-full bg-gradient-to-r from-brand to-accent" />
             </div>
+            </div>
           </div>
         </aside>
 
