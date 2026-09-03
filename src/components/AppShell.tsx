@@ -8,6 +8,7 @@ import {
   MessagesSquare,
   LayoutDashboard,
 } from "lucide-react";
+import { useProfile } from "@/lib/profile";
 
 export const NAV_ITEMS = [
   { to: "/dashboard", label: "Overview Dashboard", short: "Overview", icon: LayoutDashboard },
@@ -17,6 +18,17 @@ export const NAV_ITEMS = [
   { to: "/research", label: "AI Research Assistant", short: "Research", icon: Search },
   { to: "/chat", label: "AI Chatbot", short: "Chat", icon: MessagesSquare },
 ] as const;
+
+function SidebarProfile() {
+  const { role, orgType } = useProfile();
+  return (
+    <div className="glass rounded-2xl p-4">
+      <p className="text-[11px] uppercase tracking-wider text-muted-foreground/70">Workspace</p>
+      <p className="mt-1 text-sm font-semibold leading-tight text-foreground">{role}</p>
+      <p className="text-xs text-muted-foreground">{orgType}</p>
+    </div>
+  );
+}
 
 export function AppShell({ children }: { children: ReactNode }) {
   return (
