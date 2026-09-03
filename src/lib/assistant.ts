@@ -71,7 +71,7 @@ export async function generateEmail(input: {
 }): Promise<EmailResult> {
   await delay(1100);
   const topic = clean(input.topic).replace(/\.$/, "");
-  const short = topic.length > 58 ? topic.slice(0, 55).trimEnd() + "…" : topic;
+  const short = topic.split(" ").slice(0, 8).join(" ").replace(/[,;:]$/, "");
   const key = titleCase(short);
   const points = sentences(topic).slice(0, 3);
 
