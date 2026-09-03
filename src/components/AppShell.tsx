@@ -1,8 +1,16 @@
 import { Link } from "@tanstack/react-router";
 import type { ReactNode } from "react";
-import { Mail, NotebookPen, CalendarClock, Search, MessagesSquare } from "lucide-react";
+import {
+  Mail,
+  NotebookPen,
+  CalendarClock,
+  Search,
+  MessagesSquare,
+  LayoutDashboard,
+} from "lucide-react";
 
 export const NAV_ITEMS = [
+  { to: "/dashboard", label: "Overview Dashboard", short: "Overview", icon: LayoutDashboard },
   { to: "/", label: "Smart Email Generator", short: "Email", icon: Mail },
   { to: "/meeting-notes", label: "Meeting Notes Summarizer", short: "Notes", icon: NotebookPen },
   { to: "/task-planner", label: "AI Task Planner", short: "Planner", icon: CalendarClock },
