@@ -1,14 +1,34 @@
 import { Link } from "@tanstack/react-router";
 import type { ReactNode } from "react";
-import { Mail, NotebookPen, CalendarClock, Search, MessagesSquare } from "lucide-react";
+import {
+  Mail,
+  NotebookPen,
+  CalendarClock,
+  Search,
+  MessagesSquare,
+  LayoutDashboard,
+} from "lucide-react";
+import { useProfile } from "@/lib/profile";
 
 export const NAV_ITEMS = [
+  { to: "/dashboard", label: "Overview Dashboard", short: "Overview", icon: LayoutDashboard },
   { to: "/", label: "Smart Email Generator", short: "Email", icon: Mail },
   { to: "/meeting-notes", label: "Meeting Notes Summarizer", short: "Notes", icon: NotebookPen },
   { to: "/task-planner", label: "AI Task Planner", short: "Planner", icon: CalendarClock },
   { to: "/research", label: "AI Research Assistant", short: "Research", icon: Search },
   { to: "/chat", label: "AI Chatbot", short: "Chat", icon: MessagesSquare },
 ] as const;
+
+function SidebarProfile() {
+  const { role, orgType } = useProfile();
+  return (
+    <div className="glass rounded-2xl p-4">
+      <p className="text-[11px] uppercase tracking-wider text-muted-foreground/70">Workspace</p>
+      <p className="mt-1 text-sm font-semibold leading-tight text-foreground">{role}</p>
+      <p className="text-xs text-muted-foreground">{orgType}</p>
+    </div>
+  );
+}
 
 export function AppShell({ children }: { children: ReactNode }) {
   return (
@@ -49,13 +69,17 @@ export function AppShell({ children }: { children: ReactNode }) {
             ))}
           </nav>
 
-          <div className="mt-auto glass rounded-2xl p-4">
+          <div className="mt-auto flex flex-col gap-3">
+            <SidebarProfile />
+
+          <div className="glass rounded-2xl p-4">
             <div className="mb-2 flex items-center gap-2">
               <span className="size-2 rounded-full bg-accent" />
               <span className="text-xs font-medium text-foreground/80">Pro plan · 4,210 credits</span>
             </div>
             <div className="h-1.5 w-full overflow-hidden rounded-full bg-white/10">
               <div className="h-full w-3/4 rounded-full bg-gradient-to-r from-brand to-accent" />
+            </div>
             </div>
           </div>
         </aside>
