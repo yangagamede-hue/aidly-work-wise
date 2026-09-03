@@ -151,7 +151,7 @@ export async function summarizeMeeting(notes: string): Promise<MeetingResult> {
       const named = l.match(/\b([A-Z][a-z]{2,10})\b/);
       return {
         task: titleCase(l.replace(/\.$/, "")),
-        assignee: named ? named[1] : NAMES[i % NAMES.length],
+        assignee: named?.[1] ?? NAMES[i % NAMES.length] ?? "Unassigned",
         priority: i === 0 ? "High" : i < 3 ? "Medium" : "Low",
       };
     });
@@ -164,7 +164,9 @@ export async function summarizeMeeting(notes: string): Promise<MeetingResult> {
       );
       return {
         item: titleCase(l.replace(/\.$/, "")),
-        due: m ? titleCase(m[1]) : ["This Friday", "Next week", "End of month", "Q3"][i % 4],
+        due: m?.[1]
+          ? titleCase(m[1])
+          : (["This Friday", "Next week", "End of month", "Q3"][i % 4] ?? "This week"),
       };
     });
 
